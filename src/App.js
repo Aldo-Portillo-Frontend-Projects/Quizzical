@@ -6,11 +6,11 @@ function App() {
 
   return (
     <div className="App">
-      <Question questionNum="0" />
-      {/* <Question questionNum="1" />
-      <Question questionNum="2" />
-      <Question questionNum="3" />
-      <Question questionNum="4" /> */}
+      <Question key="0" questionNum="0" />
+      <Question key="1" questionNum="1" />
+      <Question key="2" questionNum="2" />
+      <Question key="3" questionNum="3" />
+      <Question key="4" questionNum="4" />
     </div>
   );
 }

@@ -1,17 +1,29 @@
 import React from 'react'
 import Answer from './Answer';
 import { data } from './Api'
+import { nanoid } from 'nanoid'
 
 export default function Question (props) {
 
     function collectAnswers(){
         let answer = [];
         answer.push(
-            {value: data.results[props.questionNum].correct_answer, correct: true, held: false}
+            {
+                key: nanoid(),
+                value: data.results[props.questionNum].correct_answer, 
+                correct: true, 
+                isHeld: false,
+                id: nanoid()}
         )
         let incorrectAnswerArr = data.results[props.questionNum].incorrect_answers;
         for (let i = 0; i < incorrectAnswerArr.length; i++){
-            answer.push({value: incorrectAnswerArr[i], correct: false,})
+            answer.push({
+                key: nanoid(),
+                value: incorrectAnswerArr[i], 
+                correct: false, 
+                isHeld: false,
+                id: nanoid(),
+            })
         }
         for (let i = answer.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -25,10 +37,22 @@ export default function Question (props) {
 
     const [answer, setAnswer] = React.useState(collectAnswers())
     
-console.log(answer)
+    function selectAnswer (id) {
+
+        setAnswer(oldAnswer => oldAnswer.map(option => {
+            //return a new object that changes the isHeld property of the object in new array
+            return option.id === id ? 
+                {...option, isHeld: !option.isHeld} :
+                //If not, return regular array
+                option;
+        }))
+    }
+
+    
     
     const answerRender = answer.map(option => {
-        return <Answer value={option.value} correct={option.correct} held={option.held}/>
+        return <Answer value={option.value} correct={option.correct} clickHandle={() => selectAnswer(option.id)} isHeld={option.isHeld}/>
+
     })
    
     return(
