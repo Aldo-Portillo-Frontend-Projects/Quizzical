@@ -37,18 +37,29 @@ function collectAnswers(num){
           return answer;
           
       }
-      console.table(collectAnswers(0))
+      //console.table(collectAnswers(0))
 
-      const [answers, setAnswers] = React.useState(collectAnswers(0))
+      const completeAnswers = () => {
+        let completeArr = []
+        for(let i = 0; i < 5; i++){
+          completeArr.push(collectAnswers(i))
+        }
+        return completeArr;
+      }
 
+      const [answers, setAnswers] = React.useState(completeAnswers())
+
+      console.log(completeAnswers())
+      
+      
   return (
     <div className='container'>
       <h1>Quizzical</h1>
-      <Component question = {data.results[0].question} answers={answers}/> {/* Redndered components mapped */}
-      <Component question = {data.results[1].question} answers={answers}/>
-      <Component question = {data.results[2].question} answers={answers}/>
-      <Component question = {data.results[3].question} answers={answers}/>
-      <Component question = {data.results[4].question} answers={answers}/>
+      <Component question = {data.results[0].question} questionNum = {0} answers={answers}/> {/* Redndered components mapped */}
+       <Component question = {data.results[1].question} questionNum = {1} answers={answers}/>
+      <Component question = {data.results[2].question} questionNum = {2} answers={answers}/>
+      <Component question = {data.results[3].question} questionNum = {3} answers={answers}/>
+     {/* <Component question = {data.results[4].question} questionNum = {3} answers={answers}/>  */}
 
       <button className='submit-button'>Submit</button>
     </div>
