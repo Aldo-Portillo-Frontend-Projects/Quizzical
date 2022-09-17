@@ -51,14 +51,23 @@ function collectAnswers(num){
 
       console.log(completeAnswers())
       
-      
+          function selectAnswer (id) {
+
+        setAnswers(oldAnswer => oldAnswer.map(option => {
+            //return a new object that changes the isHeld property of the object in new array
+            return option.id === id ? 
+                {...option, isHeld: !option.isHeld} :
+                //If not, return regular array
+                option;
+        }))
+    }
   return (
     <div className='container'>
       <h1>Quizzical</h1>
-      <Component question = {data.results[0].question} questionNum = {0} answers={answers}/> {/* Redndered components mapped */}
-       <Component question = {data.results[1].question} questionNum = {1} answers={answers}/>
-      <Component question = {data.results[2].question} questionNum = {2} answers={answers}/>
-      <Component question = {data.results[3].question} questionNum = {3} answers={answers}/>
+      <Component question = {data.results[0].question} questionNum = {0} answers={answers} clickHandle={() => selectAnswer(answers.id)}/> {/* Redndered components mapped */}
+       <Component question = {data.results[1].question} questionNum = {1} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
+      <Component question = {data.results[2].question} questionNum = {2} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
+      <Component question = {data.results[3].question} questionNum = {3} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
      {/* <Component question = {data.results[4].question} questionNum = {3} answers={answers}/>  */}
 
       <button className='submit-button'>Submit</button>
