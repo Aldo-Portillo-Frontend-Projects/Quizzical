@@ -4,37 +4,37 @@ export const data = {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "On which day did the World Wide Web go online?",
-        "correct_answer": "December 20, 1990",
-        "incorrect_answers": ["December 17, 1996", "November 12, 1990", "November 24, 1995"]
+        "question": "What five letter word is the motto of the IBM Computer company?",
+        "correct_answer": "Think",
+        "incorrect_answers": ["Click", "Logic", "Pixel"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What is known as &quot;the brain&quot; of the Computer?",
-        "correct_answer": "Central Processing Unit",
-        "incorrect_answers": ["Motherboard", "Graphics Processing Unit", "Keyboard"]
+        "question": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
+        "correct_answer": "Heat Sink",
+        "incorrect_answers": ["CPU Vent", "Temperature Decipator", "Heat Vent"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does the term MIME stand for, in regards to computing?",
-        "correct_answer": "Multipurpose Internet Mail Extensions",
-        "incorrect_answers": ["Mail Internet Mail Exchange", "Multipurpose Interleave Mail Exchange", "Mail Interleave Method Exchange"]
+        "question": "In computing terms, typically what does CLI stand for?",
+        "correct_answer": "Command Line Interface",
+        "incorrect_answers": ["Common Language Input", "Control Line Interface", "Common Language Interface"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does RAID stand for?",
-        "correct_answer": "Redundant Array of Independent Disks",
-        "incorrect_answers": ["Rapid Access for Indexed Devices", "Range of Applications with Identical Designs", "Randomized Abstract Identification Description"]
+        "question": "Which programming language was developed by Sun Microsystems in 1995?",
+        "correct_answer": "Java",
+        "incorrect_answers": ["Python", "Solaris OS", "C++"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does the &#039;S&#039; in the RSA encryption algorithm stand for?",
-        "correct_answer": "Shamir",
-        "incorrect_answers": ["Secure", "Schottky", "Stable"]
+        "question": "How many bytes are in a single Kibibyte?",
+        "correct_answer": "1024",
+        "incorrect_answers": ["2400", "1000", "1240"]
     }]
 }
 
