@@ -1,71 +1,25 @@
 import './App.css';
 import React from 'react';
-import { questions } from './Api'
+import { formatAPI } from './formatAPI'
+import { baseQuestions } from './Api.js'
 
 function App() {
 
   const [currentQuestion, setCurrentQuestion] = React.useState(0)
   const [showScore, setShowScore] = React.useState(false)
   const [score, setScore] = React.useState(0)
-  const [data, setData] = React.useState({})
+  const [questions, setQuestions] = React.useState(baseQuestions)
 
   React.useEffect(function () { 
     console.log("effect ran")
     fetch("https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple")
           .then(res => res.json())
-          .then(data => setData(data))
+          .then(data => setQuestions(formatAPI(data)))
         }, [currentQuestion])
 
-  console.table(data)
-  const questions = [
-    {
-        questionText: data.results[0].question,
-        answerOptions: [
-            {answerText: data.results[0].incorrect_answers[0], isCorrect: false,},
-            {answerText: data.results[0].incorrect_answers[1], isCorrect: false,},
-            {answerText: data.results[0].incorrect_answers[2], isCorrect: false,},
-            {answerText: data.results[0].correct_answer, isCorrect: true,}
-        ]
-    },
-    {
-        questionText: data.results[1].question,
-        answerOptions: [
-            {answerText: data.results[1].incorrect_answers[0], isCorrect: false,},
-            {answerText: data.results[1].incorrect_answers[1], isCorrect: false,},
-            {answerText: data.results[1].incorrect_answers[2], isCorrect: false,},
-            {answerText: data.results[1].correct_answer, isCorrect: true,}
-        ]
-    },
-    {
-        questionText: data.results[0].question,
-        answerOptions: [
-            {answerText: data.results[2].incorrect_answers[0], isCorrect: false,},
-            {answerText: data.results[2].incorrect_answers[1], isCorrect: false,},
-            {answerText: data.results[2].incorrect_answers[2], isCorrect: false,},
-            {answerText: data.results[2].correct_answer, isCorrect: true,}
-        ]
-    },
-    {
-        questionText: data.results[0].question,
-        answerOptions: [
-            {answerText: data.results[3].incorrect_answers[0], isCorrect: false,},
-            {answerText: data.results[3].incorrect_answers[1], isCorrect: false,},
-            {answerText: data.results[3].incorrect_answers[2], isCorrect: false,},
-            {answerText: data.results[3].correct_answer, isCorrect: true,}
-        ]
-    },
-    {
-        questionText: data.results[0].question,
-        answerOptions: [
-            {answerText: data.results[4].incorrect_answers[0], isCorrect: false,},
-            {answerText: data.results[4].incorrect_answers[1], isCorrect: false,},
-            {answerText: data.results[4].incorrect_answers[2], isCorrect: false,},
-            {answerText: data.results[4].correct_answer, isCorrect: true,}
-        ]
-    },
+  console.table(questions)
 
-]
-  
+
 
   const handleAnswerClick = (isCorrect) =>{
     currentQuestion < 4 ? setCurrentQuestion(prevQuestion => prevQuestion + 1) : setShowScore(true);
