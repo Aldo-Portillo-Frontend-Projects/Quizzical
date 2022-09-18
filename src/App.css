@@ -4,14 +4,14 @@
 
 body {
   margin: 0;
-  background-color: #0B2434;
   padding: 20px;
   --blue: #293264;
   --white: #F5F7FB;
-  background-color: var(--white);
+  background-color: #0B2434;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #F5F7FB;
 }
 
 .question{
@@ -40,15 +40,14 @@ button {
 
 .question-page, .new-quiz-page {
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid #F5F7FB;
   display: flex;
   flex-direction: column;
    justify-content: space-between; /*wont see til fix size */
   align-items: center;
   padding: 20px;
+  background-color: #293264;
 }
-
-
 
 
 .answer-section {
@@ -65,4 +64,8 @@ button {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+
+button:hover{
+  background-color:rgb(214, 219, 245);
 }
