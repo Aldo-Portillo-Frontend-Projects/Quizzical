@@ -1,53 +1,40 @@
 import React from 'react';
 import './App.css';
-import {data} from './Api'
-import { nanoid } from 'nanoid';
-import Component from './Component';
-
+import React from 'react';
+import { formatAPI } from './formatAPI'
+import { baseQuestions } from './Api.js'
 
 function App() {
 
-//Collect data needed from API
-function collectAnswers(num){
-          let answer = [];
-          answer.push(
-              {
-                  key: nanoid(),
-                  value: data.results[num].correct_answer, 
-                  correct: true, 
-                  isHeld: false,
-                  id: nanoid()}
-          )
-          let incorrectAnswerArr = data.results[num].incorrect_answers;
-          for (let i = 0; i < incorrectAnswerArr.length; i++){
-              answer.push({
-                  key: nanoid(),
-                  value: incorrectAnswerArr[i], 
-                  correct: false, 
-                  isHeld: false,
-                  id: nanoid(),
-              })
-          }
-          for (let i = answer.length - 1; i > 0; i--) {
-              let j = Math.floor(Math.random() * (i + 1));
-              let temp = answer[i];
-              answer[i] = answer[j];
-              answer[j] = temp;
-          }
-          return answer;
-          
-      }
-      //console.table(collectAnswers(0))
+  const [currentQuestion, setCurrentQuestion] = React.useState(0)
+  const [showScore, setShowScore] = React.useState(false)
+  const [score, setScore] = React.useState(0)
+  const [questions, setQuestions] = React.useState(baseQuestions)
 
-      const completeAnswers = () => {
-        let completeArr = []
-        for(let i = 0; i < 5; i++){
-          completeArr.push(collectAnswers(i))
-        }
-        return completeArr;
-      }
+  React.useEffect(function () { 
+    fetch("https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple")
+          .then(res => res.json())
+          .then(data => setQuestions(formatAPI(data)))
+        }, [showScore])
 
-      const [answers, setAnswers] = React.useState(completeAnswers())
+
+
+
+  const handleAnswerClick = (isCorrect) =>{
+    currentQuestion < 4 ? setCurrentQuestion(prevQuestion => prevQuestion + 1) : setShowScore(true);
+
+    if(isCorrect === true){
+      setScore(prevScore => {
+        return prevScore + 1
+      })
+    }
+  }
+
+  const handleNewQuizClick = () => {
+    setCurrentQuestion(0)
+    setShowScore(false)
+    setScore(0)
+  }
 
       console.log(completeAnswers())
       
@@ -62,15 +49,29 @@ function collectAnswers(num){
         }))
     }
   return (
-    <div className='container'>
-      <h1>Quizzical</h1>
-      <Component question = {data.results[0].question} questionNum = {0} answers={answers} clickHandle={() => selectAnswer(answers.id)}/> {/* Redndered components mapped */}
-       <Component question = {data.results[1].question} questionNum = {1} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
-      <Component question = {data.results[2].question} questionNum = {2} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
-      <Component question = {data.results[3].question} questionNum = {3} answers={answers} clickHandle={() => selectAnswer(answers.id)}/>
-     {/* <Component question = {data.results[4].question} questionNum = {3} answers={answers}/>  */}
-
-      <button className='submit-button'>Submit</button>
+    <div className='app'>
+      {showScore ? 
+      (
+      <div className='new-quiz-page centered'>
+        <div className='score-section'>You scored {score} out of {questions.length}</div>
+        <button className='new-quiz-button' onClick={handleNewQuizClick}>New Quiz</button>
+      </div>
+      ) : 
+      (
+      <div className='question-page centered'>
+        <div className='question-section'>
+          <h3 className='question-count'>
+            <span>Question {currentQuestion + 1}</span>/{questions.length}
+          </h3>
+          <h2 className='question-text'>{questions[currentQuestion].questionText}</h2>
+        </div>
+        <div className='answer-section'>
+          {questions[currentQuestion].answerOptions.map((answerOption) => {
+            return <button onClick={() => handleAnswerClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+          })}
+        </div>
+      </div>
+      )}
     </div>
   );
 }
