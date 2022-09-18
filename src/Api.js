@@ -1,41 +1,82 @@
-export const data = {
+const data = {
     "response_code": 0,
     "results": [{
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "On which day did the World Wide Web go online?",
-        "correct_answer": "December 20, 1990",
-        "incorrect_answers": ["December 17, 1996", "November 12, 1990", "November 24, 1995"]
+        "question": "While Apple was formed in California, in which western state was Microsoft founded?",
+        "correct_answer": "New Mexico",
+        "incorrect_answers": ["Washington", "Colorado", "Arizona"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What is known as &quot;the brain&quot; of the Computer?",
-        "correct_answer": "Central Processing Unit",
-        "incorrect_answers": ["Motherboard", "Graphics Processing Unit", "Keyboard"]
+        "question": "Generally, which component of a computer draws the most power?",
+        "correct_answer": "Video Card",
+        "incorrect_answers": ["Hard Drive", "Processor", "Power Supply"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does the term MIME stand for, in regards to computing?",
-        "correct_answer": "Multipurpose Internet Mail Extensions",
-        "incorrect_answers": ["Mail Internet Mail Exchange", "Multipurpose Interleave Mail Exchange", "Mail Interleave Method Exchange"]
+        "question": "In the server hosting industry IaaS stands for...",
+        "correct_answer": "Infrastructure as a Service",
+        "incorrect_answers": ["Internet as a Service", "Internet and a Server", "Infrastructure as a Server"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does RAID stand for?",
-        "correct_answer": "Redundant Array of Independent Disks",
-        "incorrect_answers": ["Rapid Access for Indexed Devices", "Range of Applications with Identical Designs", "Randomized Abstract Identification Description"]
+        "question": "What is the main CPU is the Sega Mega Drive \/ Sega Genesis?",
+        "correct_answer": "Motorola 68000",
+        "incorrect_answers": ["Zilog Z80", "Yamaha YM2612", "Intel 8088"]
     }, {
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does the &#039;S&#039; in the RSA encryption algorithm stand for?",
-        "correct_answer": "Shamir",
-        "incorrect_answers": ["Secure", "Schottky", "Stable"]
+        "question": "In programming, what do you call functions with the same name but different implementations?",
+        "correct_answer": "Overloading",
+        "incorrect_answers": ["Overriding", "Abstracting", "Inheriting"]
     }]
 }
 
 //https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple
+
+export const questions = [
+    {
+        questionText: data.results[0].question,
+        answerOptions: [
+            {answerText: data.results[0].incorrect_answers[0], isCorrect: false,},
+            {answerText: data.results[0].incorrect_answers[1], isCorrect: false,},
+            {answerText: data.results[0].incorrect_answers[2], isCorrect: false,},
+            {answerText: data.results[0].correct_answer, isCorrect: true,}
+        ]
+    },
+    {
+        questionText: data.results[1].question,
+        answerOptions: [
+            {answerText: data.results[1].incorrect_answers[0], isCorrect: false,},
+            {answerText: data.results[1].incorrect_answers[1], isCorrect: false,},
+            {answerText: data.results[1].incorrect_answers[2], isCorrect: false,},
+            {answerText: data.results[1].correct_answer, isCorrect: true,}
+        ]
+    },
+    {
+        questionText: data.results[0].question,
+        answerOptions: [
+            {answerText: data.results[2].incorrect_answers[0], isCorrect: false,},
+            {answerText: data.results[2].incorrect_answers[1], isCorrect: false,},
+            {answerText: data.results[2].incorrect_answers[2], isCorrect: false,},
+            {answerText: data.results[2].correct_answer, isCorrect: true,}
+        ]
+    },
+    {
+        questionText: data.results[0].question,
+        answerOptions: [
+            {answerText: data.results[3].incorrect_answers[0], isCorrect: false,},
+            {answerText: data.results[3].incorrect_answers[1], isCorrect: false,},
+            {answerText: data.results[3].incorrect_answers[2], isCorrect: false,},
+            {answerText: data.results[4].correct_answer, isCorrect: true,}
+        ]
+    },
+
+]
+console.log(questions)
