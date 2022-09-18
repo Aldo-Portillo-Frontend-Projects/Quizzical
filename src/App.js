@@ -1,8 +1,9 @@
 import './App.css';
+import { questions } from './Api'
 
 function App() {
 
-  
+  console.log(questions)
   return (
     <>
     <div className='question-section'>
