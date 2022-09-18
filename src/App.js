@@ -11,13 +11,11 @@ function App() {
   const [questions, setQuestions] = React.useState(baseQuestions)
 
   React.useEffect(function () { 
-    console.log("effect ran")
     fetch("https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple")
           .then(res => res.json())
           .then(data => setQuestions(formatAPI(data)))
-        }, [currentQuestion])
+        }, [showScore])
 
-  console.table(questions)
 
 
 
