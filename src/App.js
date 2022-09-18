@@ -18,11 +18,21 @@ function App() {
     }
   }
 
+  const handleNewQuizClick = () => {
+    setCurrentQuestion(0)
+    setShowScore(false)
+    setScore(0)
+  }
 
   return (
     <div className='app'>
       {showScore ? 
-      (<div className='score-section'>You scored {score} out of {questions.length}</div>) : 
+      (
+      <>
+        <div className='score-section'>You scored {score} out of {questions.length}</div>
+        <button className='new-quiz-button' onClick={handleNewQuizClick}>New Quiz</button>
+      </>
+      ) : 
       (
       <>
         <div className='question-section'>
