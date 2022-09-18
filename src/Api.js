@@ -40,7 +40,7 @@ const data = {
 
 //https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple
 
-export const questions = [
+export const baseQuestions = [
     {
         questionText: data.results[0].question,
         answerOptions: [
@@ -74,9 +74,17 @@ export const questions = [
             {answerText: data.results[3].incorrect_answers[0], isCorrect: false,},
             {answerText: data.results[3].incorrect_answers[1], isCorrect: false,},
             {answerText: data.results[3].incorrect_answers[2], isCorrect: false,},
+            {answerText: data.results[3].correct_answer, isCorrect: true,}
+        ]
+    },
+    {
+        questionText: data.results[0].question,
+        answerOptions: [
+            {answerText: data.results[4].incorrect_answers[0], isCorrect: false,},
+            {answerText: data.results[4].incorrect_answers[1], isCorrect: false,},
+            {answerText: data.results[4].incorrect_answers[2], isCorrect: false,},
             {answerText: data.results[4].correct_answer, isCorrect: true,}
         ]
     },
 
 ]
-console.log(questions)
