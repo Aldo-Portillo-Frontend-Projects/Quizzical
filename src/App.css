@@ -14,11 +14,6 @@ body {
   color: #F5F7FB;
 }
 
-.App{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .question{
   display: flex;
   flex-direction: column;

@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import React from 'react';
 import { formatAPI } from './formatAPI'
@@ -36,18 +35,6 @@ function App() {
     setScore(0)
   }
 
-      console.log(completeAnswers())
-      
-          function selectAnswer (id) {
-
-        setAnswers(oldAnswer => oldAnswer.map(option => {
-            //return a new object that changes the isHeld property of the object in new array
-            return option.id === id ? 
-                {...option, isHeld: !option.isHeld} :
-                //If not, return regular array
-                option;
-        }))
-    }
   return (
     <div className='app'>
       {showScore ? 
