@@ -23,12 +23,7 @@ body {
   padding: 20px;
 }
 
-.answer-choices {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-}
+
 
 button {
   border-radius: 10px;
@@ -39,4 +34,35 @@ button {
   padding: 10px;
   font-weight: 300;
 
+}
+
+
+
+.question-page, .new-quiz-page {
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+   justify-content: space-between; /*wont see til fix size */
+  align-items: center;
+  padding: 20px;
+}
+
+
+
+
+.answer-section {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 }

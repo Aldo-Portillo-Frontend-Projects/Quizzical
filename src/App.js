@@ -39,25 +39,25 @@ function App() {
     <div className='app'>
       {showScore ? 
       (
-      <>
+      <div className='new-quiz-page centered'>
         <div className='score-section'>You scored {score} out of {questions.length}</div>
         <button className='new-quiz-button' onClick={handleNewQuizClick}>New Quiz</button>
-      </>
+      </div>
       ) : 
       (
-      <>
+      <div className='question-page centered'>
         <div className='question-section'>
-          <div className='question-count'>
+          <h3 className='question-count'>
             <span>Question {currentQuestion + 1}</span>/{questions.length}
-          </div>
-          <div className='question-text'>{questions[currentQuestion].questionText}</div>
+          </h3>
+          <h2 className='question-text'>{questions[currentQuestion].questionText}</h2>
         </div>
         <div className='answer-section'>
           {questions[currentQuestion].answerOptions.map((answerOption) => {
             return <button onClick={() => handleAnswerClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
           })}
         </div>
-      </>
+      </div>
       )}
     </div>
   );
