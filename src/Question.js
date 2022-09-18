@@ -48,6 +48,16 @@ export default function Question (props) {
         }))
     }
 
+    React.useEffect(()=> {
+        console.log("answer state changed")
+        console.log(answer.correct)
+        for(let i = 0; i < answer.length; i++){
+            if (answer[i].isHeld === answer[i].correct){
+                console.log("correct" + answer[i].correct)
+            }
+        }
+    },[answer])
+
     
     
     const answerRender = answer.map(option => {
